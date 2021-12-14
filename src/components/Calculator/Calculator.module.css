@@ -1,4 +1,10 @@
 .calculator {
-    width: 400px;
-    height: 600px;
+    width: 340px;
+}
+
+@media (max-width:340px) {
+    .calculator {
+        width: 100%;
+    }
+    
 }

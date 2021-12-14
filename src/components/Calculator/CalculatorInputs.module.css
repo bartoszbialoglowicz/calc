@@ -2,3 +2,18 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+.calculatorInputs div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.flex1 {
+    width: 23.7%;
+}
+
+.flex3 {
+    width: 76.3%;
+}

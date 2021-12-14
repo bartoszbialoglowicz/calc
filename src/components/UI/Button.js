@@ -16,7 +16,7 @@ const Button = props => {
     }
 
     const calcCtx = useContext(CalcContext);
-    return <input type="button" value={props.value} className={classes.button} onClick={addValueHandler}/>
+    return <input type="button" value={props.value} className={`${classes.button} ${props.class}`} onClick={addValueHandler}/>
 };
 
 export default Button;

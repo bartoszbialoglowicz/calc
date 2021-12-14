@@ -1,12 +1,19 @@
 .button {
-    width: 80px;
-    height: 40px;
-    margin: 5px;
     border: none;
-    background-color: #a6e3e1;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0.5em rgba(1,1,1, 0.2);
+    background-color: rgba(0, 173, 181, 0.4);
+    font-weight: 400;
+    font-size: 16px;
+    display: flex;
+    height: 40px;
+    justify-content: center;
+    margin: 5px;
     transition: .1s;
+    width: 100%; 
+    color: #EEEEEE;
 }
 
 .button:hover {
-    background-color: #84c1c0;
+    background-color: rgba(0, 133, 141, 0.4);
 }

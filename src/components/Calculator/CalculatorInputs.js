@@ -30,8 +30,8 @@ const CalculatorInputs = props => {
             <Button value="." type='value'/>
         </div>
         <div>
-            <Button value="0" type='value'/>
-            <Button value="=" type='submit'/>
+            <Button value="0" type='value' class={classes.flex1}/>
+            <Button value="=" type='submit' class={classes.flex3}/>
         </div>
     </div>
 };
