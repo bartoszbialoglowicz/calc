@@ -1,12 +1,11 @@
 import Button from '../UI/Button';
 import classes from './Calculator.module.css';
+import Display from './Display';
 
 const Calculator = () => {
     return (
         <div className={classes.calculator}>
-            <div className={classes.display}>
-                DISPLAY
-            </div>
+            <Display value={0} />
             <div className={classes.inputs}>
                 <div>
                     <Button value="+"/>
