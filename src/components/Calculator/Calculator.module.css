@@ -1,0 +1,12 @@
+.calculator {
+    width: 400px;
+    height: 600px;
+}
+.inputs {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.display {
+    width: 100%;
+}
