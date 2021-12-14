@@ -4,9 +4,12 @@ const CalcContext = React.createContext({
     currentValue: 0,
     previousValue: null,
     currentAction: null,
+    canAdd: true,
     addValue: val => {},
     addAction: action => {},
-    submit: () => {}
+    submit: () => {},
+    clear: () => {},
+    back: () => {}
 });
 
 export default CalcContext;

@@ -5,17 +5,19 @@ const defaultCalcState = {
     currentValue: 0,
     previousValue: null,
     currentAction: null,
+    canAdd: true
 };
 
 const calcReducer = (state, action) => {
     if (action.type === 'VALUE') {
-        const currValue = state.currentValue;
-        const newValue = action.value;
-        if (currValue === null) {
+        let currValue = state.currentValue ? state.currentValue : 0;
+        let newValue = action.value;
+
+        if (state.currentValue[state.currentValue.length-1] === '.' && newValue === '.') {
             return {
-                currentValue: newValue,
+                currentValue: currValue,
                 previousValue: state.previousValue,
-                currentAction: state.currentAction
+                currentAction: state.currentAction,
             }
         }
         else {
@@ -34,28 +36,38 @@ const calcReducer = (state, action) => {
         };
     }
     else if (action.type === 'SUBMIT') {
-        let curVal = parseInt(state.currentValue);
-        let prevVal = parseInt(state.previousValue);
-        console.log(state.currentValue);
-        console.log(state.previousValue);
+        let curVal = parseFloat(state.currentValue);
+        let prevVal = parseFloat(state.previousValue);
 
         if(state.currentAction === '/') {
-            prevVal = prevVal/curVal;
+            curVal = prevVal/curVal;
         }
         else if (state.currentAction === '*'){
-            prevVal = prevVal*curVal;
+            curVal = prevVal*curVal;
         }
         else if (state.currentAction === '+'){
-            prevVal = prevVal+curVal;
+            curVal = prevVal+curVal;
         }
         else if (state.currentAction === '-'){
-            prevVal = prevVal-curVal;
+            curVal = prevVal-curVal;
         }
 
         return {
-            currentValue: prevVal,
-            previousValue: curVal,
+            currentValue: curVal,
+            previousValue: prevVal,
+            currentAction: state.currentAction
         };
+    }
+    else if (action.type === 'BACK') {
+        let tmpVal = state.currentValue;
+        if (tmpVal.length > 1) {
+            tmpVal = tmpVal.substring(0, tmpVal.length - 1)
+            return {
+                currentValue: tmpVal,
+                previousValue: state.previousValue,
+                currentAction: state.currentAction
+            }
+        }
     }
 
     return defaultCalcState;
@@ -84,13 +96,28 @@ const CalcProvider = props => {
         })
     };
 
+    const clearHandler = () => {
+        dispatchCalcAction({
+            type: 'CLEAR',
+        });
+    }
+
+    const undoHandler = () => {
+        dispatchCalcAction({
+            type: 'BACK',
+        })
+    }
+
     const calcContext = {
         currentValue: calcState.currentValue,
         previousValue: calcState.previousValue,
         currentAction: calcState.currentAction,
+        canAdd: calcState.canAdd,
         addValue: addValueHandler,
         addAction: addActionHandler,
-        submit: submitHandler
+        submit: submitHandler,
+        clear: clearHandler,
+        back: undoHandler
     }
 
     return <CalcContext.Provider value={calcContext}>

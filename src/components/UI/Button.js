@@ -3,15 +3,16 @@ import CalcContext from '../../store/calc-context';
 import classes from './Button.module.css';
 const Button = props => {
     const addValueHandler = () => {
-        if (props.type === 'action'){
-            console.log('action');
-            calcCtx.addAction(props.value);
-        }
-            
+        if (props.type === 'action')
+            calcCtx.addAction(props.value);    
         else if (props.type === 'value')
             calcCtx.addValue(props.value);
         else if (props.type === 'submit')
-            calcCtx.submit()
+            calcCtx.submit();
+        else if (props.type === 'back')
+            calcCtx.back();
+        else
+            calcCtx.clear();
     }
 
     const calcCtx = useContext(CalcContext);
