@@ -1,40 +1,19 @@
-import Button from '../UI/Button';
+import { useContext } from 'react/cjs/react.development';
+import CalcContext from '../../store/calc-context';
 import classes from './Calculator.module.css';
+import CalculatorInputs from './CalculatorInputs';
 import Display from './Display';
 
 const Calculator = () => {
+    const calcCtx = useContext(CalcContext);
     return (
         <div className={classes.calculator}>
             <Display value={0} />
-            <div className={classes.inputs}>
-                <div>
-                    <Button value="+"/>
-                    <Button value="-"/>
-                    <Button value="*"/>
-                    <Button value="/"/>
-                </div>
-                <div>
-                    <Button value="7"/>
-                    <Button value="8"/>
-                    <Button value="9"/>
-                    <Button value="C"/>
-                </div>
-                <div>
-                    <Button value="4"/>
-                    <Button value="5"/>
-                    <Button value="6"/>
-                    <Button value="B"/>
-                </div>
-                <div>
-                    <Button value="1"/>
-                    <Button value="2"/>
-                    <Button value="3"/>
-                    <Button value="."/>
-                </div>
-                <div>
-                    <Button value="0"/>
-                    <Button value="="/>
-                </div>
+            <CalculatorInputs />
+            <div>
+                <p>Current value: {calcCtx.currentValue}</p>
+                <p>Previous value: {calcCtx.previousValue}</p>
+                <p>Current action: {calcCtx.currentAction}</p>
             </div>
         </div>
     )

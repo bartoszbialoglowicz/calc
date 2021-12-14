@@ -1,8 +1,13 @@
+import { useContext } from 'react';
+import CalcContext from '../../store/calc-context';
+
 import classes from './Display.module.css';
 
-const Display = (props) => {
+const Display = () => {
+    const calcCtx = useContext(CalcContext);
+
     return <div className={classes.display}>
-        <input type="text" disabled="true" value={props.value}></input>
+        <input type="text" disabled value={calcCtx.currentValue}></input>
     </div>
 };
 
