@@ -10,10 +10,22 @@
     justify-content: center;
     margin: 5px;
     transition: .1s;
-    width: 100%; 
+    width: 22%; 
     color: #EEEEEE;
 }
 
 .button:hover {
     background-color: rgba(0, 133, 141, 0.4);
+}
+
+@media (max-height: 340px) {
+    .button {
+        height: 30px;
+    }
+}
+
+@media (max-height: 273px) {
+    .button {
+        height: 25px;
+    }
 }

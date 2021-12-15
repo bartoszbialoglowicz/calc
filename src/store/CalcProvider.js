@@ -54,7 +54,7 @@ const calcReducer = (state, action) => {
 
         return {
             currentValue: curVal,
-            previousValue: prevVal,
+            previousValue: state.previousValue,
             currentAction: state.currentAction
         };
     }
@@ -64,7 +64,7 @@ const calcReducer = (state, action) => {
             tmpVal = tmpVal.substring(0, tmpVal.length - 1)
             return {
                 currentValue: tmpVal,
-                previousValue: state.previousValue,
+                previousValue: action.tmpNum,
                 currentAction: state.currentAction
             }
         }
@@ -92,7 +92,7 @@ const CalcProvider = props => {
 
     const submitHandler = () => {
         dispatchCalcAction({
-            type: 'SUBMIT',
+            type: 'SUBMIT'
         })
     };
 
